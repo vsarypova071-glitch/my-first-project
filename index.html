@@ -79,6 +79,12 @@
       align-items:stretch;
     }
 
+    .photo-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
     .photo-panel{
       position:relative;
       min-height:760px;
@@ -493,73 +499,51 @@
       }
 
       .hero{
+        grid-template-columns:1fr;
         padding:14px;
         gap:18px;
       }
 
+      .photo-wrap{
+        gap:14px;
+      }
+
       .photo-panel{
-        min-height:470px;
+        min-height:auto;
+        border-radius:24px;
+        overflow:hidden;
       }
 
-      .content{
-        padding:6px 4px 18px;
-      }
-
-      .eyebrow{
-        font-size:13px;
-        gap:10px;
-        margin-bottom:18px;
-      }
-
-      .eyebrow::before{
-        width:42px;
-      }
-
-      h1{
-        font-size:54px;
-        margin-bottom:16px;
-      }
-
-      .lead{
-        font-size:22px;
-        line-height:1.42;
-        margin-bottom:16px;
-      }
-
-      .desc{
-        font-size:17px;
-        line-height:1.7;
-        margin-bottom:22px;
-      }
-
-      .tag{
-        font-size:14px;
-        padding:11px 16px;
-      }
-
-      .actions{
-        flex-direction:column;
-        gap:12px;
-      }
-
-      .btn{
+      .photo-panel img{
         width:100%;
-        min-width:unset;
-        min-height:62px;
-        font-size:17px;
+        height:auto;
+        aspect-ratio:4/5;
+        object-fit:cover;
+        display:block;
       }
 
-      .social-link{
-        width:54px;
-        height:54px;
-        font-size:20px;
+      .photo-top{
+        top:14px;
+        left:14px;
+        gap:8px;
+      }
+
+      .mini-name{
+        font-size:16px;
+      }
+
+      .mini-pill{
+        padding:10px 14px;
+        font-size:11px;
+        letter-spacing:.14em;
       }
 
       .photo-bottom{
-        left:14px;
-        right:14px;
-        bottom:14px;
+        position:static;
+        margin-top:14px;
         padding:16px 18px;
+        border-radius:20px;
+        background:rgba(13,16,28,.68);
       }
 
       .photo-bottom h3{
@@ -569,26 +553,123 @@
 
       .photo-bottom p{
         font-size:14px;
+        line-height:1.4;
+      }
+
+      .gold-dot{
+        width:16px;
+        height:16px;
+        margin-bottom:2px;
+      }
+
+      .content{
+        padding:6px 4px 18px;
+      }
+
+      .eyebrow{
+        font-size:12px;
+        gap:10px;
+        margin-bottom:16px;
+        line-height:1.4;
+        flex-wrap:wrap;
+      }
+
+      .eyebrow::before{
+        width:42px;
+      }
+
+      h1{
+        font-size:48px;
+        line-height:0.98;
+        margin-bottom:14px;
+      }
+
+      .lead{
+        font-size:18px;
+        line-height:1.4;
+        margin-bottom:14px;
+      }
+
+      .desc{
+        font-size:15px;
+        line-height:1.65;
+        margin-bottom:18px;
+      }
+
+      .tags{
+        gap:10px;
+        margin-bottom:20px;
+      }
+
+      .tag{
+        font-size:13px;
+        padding:10px 14px;
+      }
+
+      .actions{
+        flex-direction:column;
+        gap:12px;
+        margin-bottom:16px;
+      }
+
+      .btn{
+        width:100%;
+        min-width:unset;
+        min-height:58px;
+        font-size:17px;
+        padding:0 20px;
+      }
+
+      .socials{
+        gap:10px;
+        margin-bottom:14px;
+      }
+
+      .social-link{
+        width:50px;
+        height:50px;
+        font-size:18px;
       }
 
       .trust{
         font-size:13px;
+        margin-bottom:12px;
       }
 
       .note{
-        font-size:12px;
+        font-size:11px;
+        line-height:1.5;
+        letter-spacing:.12em;
       }
 
       .portfolio{
         padding:0 14px 96px;
       }
 
+      .portfolio-head{
+        margin-bottom:16px;
+      }
+
       .portfolio-head h2{
-        font-size:28px;
+        font-size:26px;
       }
 
       .portfolio-grid{
         grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .portfolio-card{
+        padding:18px;
+        border-radius:20px;
+      }
+
+      .portfolio-card h3{
+        font-size:20px;
+      }
+
+      .portfolio-card p{
+        font-size:15px;
       }
 
       .sticky-cta{
@@ -628,12 +709,14 @@
 <body>
   <main class="shell">
     <section class="hero">
-      <div class="photo-panel">
-        <img src="./photo.jpg.png" alt="Виктория" />
+      <div class="photo-wrap">
+        <div class="photo-panel">
+          <img src="./photo.jpg.png" alt="Виктория" />
 
-        <div class="photo-top">
-          <div class="mini-name">Виктория</div>
-          <div class="mini-pill">Premium Profile</div>
+          <div class="photo-top">
+            <div class="mini-name">Виктория</div>
+            <div class="mini-pill">Premium Profile</div>
+          </div>
         </div>
 
         <div class="photo-bottom">
