@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Виктория — AI эксперт</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --bg2:#0a1020;
+      --panel:rgba(10,14,26,.78);
+      --line:rgba(255,255,255,.08);
+      --text:#f8f3ea;
+      --muted:#c6bdaf;
+      --gold1:#fff0c8;
+      --gold2:#f0ca78;
+      --gold3:#c2822f;
+      --goldGlow:rgba(240,202,120,.24);
+      --shadow:0 30px 90px rgba(0,0,0,.50);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html,body{
+      width:100%;
+      min-height:100%;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Inter, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(22,45,110,.38), transparent 24%),
+        radial-gradient(circle at 84% 12%, rgba(255,193,94,.07), transparent 18%),
+        linear-gradient(180deg, #04060a 0%, #09101d 45%, #04060a 100%);
+      padding:20px;
+      overflow-x:hidden;
+    }
+
+    .shell{
+      position:relative;
+      max-width:1480px;
+      margin:0 auto;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(240,202,120,.16);
+      background:
+        radial-gradient(circle at 30% 62%, rgba(240,202,120,.10), transparent 18%),
+        linear-gradient(180deg, rgba(8,12,22,.96), rgba(7,10,18,.98));
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+
+    .shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(126deg, transparent 0%, transparent 20%, rgba(255,190,90,.16) 23%, transparent 26%, transparent 100%),
+        linear-gradient(148deg, transparent 0%, transparent 58%, rgba(255,190,90,.12) 62%, transparent 66%, transparent 100%),
+        linear-gradient(166deg, transparent 0%, transparent 76%, rgba(255,190,90,.08) 80%, transparent 84%, transparent 100%);
+      opacity:.9;
+      z-index:0;
+    }
+
+    .hero{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns: 520px 1fr;
+      gap:40px;
+      padding:36px;
+      align-items:stretch;
+    }
+
+    .photo-panel{
+      position:relative;
+      min-height:760px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#0a0e18;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+
+    .photo-panel::before{
+      content:"";
+      position:absolute;
+      inset:-10%;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(255,205,120,.25), transparent 26%),
+        radial-gradient(circle at 52% 26%, rgba(255,255,255,.06), transparent 18%);
+      filter:blur(28px);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .photo-panel img{
+      position:relative;
+      z-index:2;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.01);
+      filter:saturate(1.02) contrast(1.03);
+      transition:transform .55s ease, filter .55s ease;
+      box-shadow:
+        0 0 60px rgba(255,200,120,.18),
+        0 0 120px rgba(255,180,80,.10);
+    }
+
+    .photo-panel:hover img{
+      transform:scale(1.03);
+      filter:saturate(1.04) contrast(1.05);
+    }
+
+    .photo-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:2;
+      background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.10) 36%, rgba(0,0,0,.36));
+      pointer-events:none;
+    }
+
+    .photo-top{
+      position:absolute;
+      top:22px;
+      left:22px;
+      z-index:4;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .mini-name{
+      color:#fff3da;
+      font-size:18px;
+      font-weight:700;
+      text-shadow:0 2px 10px rgba(0,0,0,.34);
+    }
+
+    .mini-pill{
+      width:max-content;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(10,14,24,.42);
+      backdrop-filter:blur(10px);
+      color:#f6ebd7;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .photo-bottom{
+      position:absolute;
+      left:22px;
+      right:22px;
+      bottom:22px;
+      z-index:4;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      padding:24px 26px;
+      border-radius:24px;
+      background:rgba(13,16,28,.44);
+      border:1px solid rgba(240,202,120,.22);
+      backdrop-filter:blur(10px);
+      box-shadow:0 12px 40px rgba(0,0,0,.24);
+    }
+
+    .photo-bottom h3{
+      font-size:30px;
+      font-weight:800;
+      color:#fff4dc;
+      margin-bottom:10px;
+    }
+
+    .photo-bottom p{
+      font-size:18px;
+      color:#e7dbc4;
+    }
+
+    .gold-dot{
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #ffe8b2, #efc45d 58%, #b77b29 100%);
+      box-shadow:0 0 18px rgba(255,232,178,.72);
+      flex:0 0 auto;
+      margin-bottom:8px;
+    }
+
+    .content{
+      padding:26px 8px 26px 0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      color:#d6aa63;
+      font-size:18px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:28px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:84px;
+      height:2px;
+      border-radius:99px;
+      background:linear-gradient(90deg, rgba(255,230,178,1), rgba(255,230,178,.1));
+    }
+
+    h1{
+      font-size:96px;
+      line-height:.94;
+      letter-spacing:-0.055em;
+      font-weight:900;
+      margin-bottom:24px;
+      background:linear-gradient(180deg, #fff4d3 0%, #efcf88 46%, #bf8338 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow:0 10px 30px rgba(240,202,120,.12);
+    }
+
+    .lead{
+      max-width:920px;
+      font-size:35px;
+      line-height:1.46;
+      font-weight:800;
+      color:#fff8ea;
+      margin-bottom:22px;
+    }
+
+    .desc{
+      max-width:930px;
+      font-size:22px;
+      line-height:1.82;
+      color:rgba(248,243,234,.74);
+      margin-bottom:34px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-bottom:34px;
+    }
+
+    .tag{
+      padding:15px 24px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+      color:#f0e5d1;
+      font-size:18px;
+      transition:.25s ease;
+    }
+
+    .tag:hover{
+      transform:translateY(-2px);
+      border-color:rgba(240,202,120,.22);
+      box-shadow:0 10px 26px rgba(0,0,0,.18);
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-bottom:20px;
+    }
+
+    .btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:78px;
+      min-width:250px;
+      padding:0 36px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:20px;
+      font-weight:800;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      overflow:hidden;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      color:#1b140b;
+      background:linear-gradient(135deg, #ffe4a4 0%, #efc56e 46%, #c4872d 100%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08) inset,
+        0 16px 38px rgba(239,197,110,.28),
+        0 0 38px rgba(239,197,110,.20);
+    }
+
+    .btn-primary::before{
+      content:"";
+      position:absolute;
+      inset:-20%;
+      background:linear-gradient(110deg, transparent 30%, rgba(255,255,255,.30) 48%, transparent 62%);
+      transform:translateX(-120%);
+      animation:shine 4.8s linear infinite;
+    }
+
+    .btn-secondary{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.02);
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+    }
+
+    .btn-secondary:hover{
+      border-color:rgba(240,202,120,.24);
+      box-shadow:0 14px 30px rgba(0,0,0,.22);
+    }
+
+    @keyframes shine{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(140%)}
+    }
+
+    .socials{
+      display:flex;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .social-link{
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      color:#fff4dc;
+      font-size:23px;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .social-link:hover{
+      transform:translateY(-2px);
+      border-color:rgba(240,202,120,.30);
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+    }
+
+    .trust{
+      font-size:15px;
+      color:rgba(232,219,194,.78);
+      margin-bottom:18px;
+    }
+
+    .note{
+      color:rgba(232,219,194,.68);
+      font-size:16px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .portfolio{
+      position:relative;
+      z-index:2;
+      padding:0 36px 36px;
+    }
+
+    .portfolio-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:22px;
+    }
+
+    .portfolio-head h2{
+      font-size:38px;
+      color:#fff4dc;
+      font-weight:800;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .portfolio-card{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      padding:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+      box-shadow:0 14px 36px rgba(0,0,0,.16);
+      transition:.25s ease;
+    }
+
+    .portfolio-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(240,202,120,.22);
+      box-shadow:0 20px 42px rgba(0,0,0,.22);
+    }
+
+    .portfolio-card h3{
+      font-size:22px;
+      color:#fff4dc;
+      font-weight:800;
+    }
+
+    .portfolio-card p{
+      font-size:16px;
+      line-height:1.7;
+      color:rgba(248,243,234,.72);
+    }
+
+    .portfolio-link{
+      width:max-content;
+      text-decoration:none;
+      color:#f0ca78;
+      font-weight:700;
+      font-size:15px;
+      transition:.25s ease;
+    }
+
+    .portfolio-link:hover{
+      color:#fff0c8;
+    }
+
+    .sticky-cta{
+      display:none;
+    }
+
+    @media (max-width: 1220px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .photo-panel{
+        min-height:650px;
+      }
+
+      h1{
+        font-size:74px;
+      }
+
+      .lead{
+        font-size:29px;
+      }
+
+      .desc{
+        font-size:20px;
+      }
+
+      .portfolio-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      body{
+        padding:10px;
+      }
+
+      .shell{
+        min-height:auto;
+        border-radius:24px;
+      }
+
+      .hero{
+        padding:14px;
+        gap:18px;
+      }
+
+      .photo-panel{
+        min-height:470px;
+      }
+
+      .content{
+        padding:6px 4px 18px;
+      }
+
+      .eyebrow{
+        font-size:13px;
+        gap:10px;
+        margin-bottom:18px;
+      }
+
+      .eyebrow::before{
+        width:42px;
+      }
+
+      h1{
+        font-size:54px;
+        margin-bottom:16px;
+      }
+
+      .lead{
+        font-size:22px;
+        line-height:1.42;
+        margin-bottom:16px;
+      }
+
+      .desc{
+        font-size:17px;
+        line-height:1.7;
+        margin-bottom:22px;
+      }
+
+      .tag{
+        font-size:14px;
+        padding:11px 16px;
+      }
+
+      .actions{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .btn{
+        width:100%;
+        min-width:unset;
+        min-height:62px;
+        font-size:17px;
+      }
+
+      .social-link{
+        width:54px;
+        height:54px;
+        font-size:20px;
+      }
+
+      .photo-bottom{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        padding:16px 18px;
+      }
+
+      .photo-bottom h3{
+        font-size:22px;
+        margin-bottom:6px;
+      }
+
+      .photo-bottom p{
+        font-size:14px;
+      }
+
+      .trust{
+        font-size:13px;
+      }
+
+      .note{
+        font-size:12px;
+      }
+
+      .portfolio{
+        padding:0 14px 96px;
+      }
+
+      .portfolio-head h2{
+        font-size:28px;
+      }
+
+      .portfolio-grid{
+        grid-template-columns:1fr;
+      }
+
+      .sticky-cta{
+        display:flex;
+        position:fixed;
+        left:12px;
+        right:12px;
+        bottom:12px;
+        z-index:50;
+        padding:10px;
+        border-radius:22px;
+        background:rgba(10,14,24,.78);
+        border:1px solid rgba(255,255,255,.08);
+        backdrop-filter:blur(16px);
+        box-shadow:0 18px 40px rgba(0,0,0,.30);
+      }
+
+      .sticky-cta a{
+        width:100%;
+        min-height:58px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:16px;
+        text-decoration:none;
+        font-size:17px;
+        font-weight:800;
+        color:#1b140b;
+        background:linear-gradient(135deg, #ffe4a4 0%, #efc56e 46%, #c4872d 100%);
+        box-shadow:
+          0 0 0 1px rgba(255,255,255,.08) inset,
+          0 10px 24px rgba(239,197,110,.22);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="photo-panel">
+        <img src="./photo.jpg.png" alt="Виктория" />
+
+        <div class="photo-top">
+          <div class="mini-name">Виктория</div>
+          <div class="mini-pill">Premium Profile</div>
+        </div>
+
+        <div class="photo-bottom">
+          <div>
+            <h3>Виктория</h3>
+            <p>AI разработчик • digital creator</p>
+          </div>
+          <div class="gold-dot"></div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="eyebrow">AI Expert • Personal Brand</div>
+
+        <h1>Виктория</h1>
+
+        <div class="lead">
+          Создаю AI-продукты, которые усиливают бренд и приводят клиентов
+        </div>
+
+        <div class="desc">
+          Помогаю экспертам и бизнесу запускать современные digital-решения:
+          от Telegram Mini Apps до полноценных AI-сервисов с премиальной подачей,
+          сильным визуалом и удобным пользовательским опытом.
+        </div>
+
+        <div class="tags">
+          <div class="tag">AI apps</div>
+          <div class="tag">Telegram Mini Apps</div>
+          <div class="tag">Luxury UI</div>
+          <div class="tag">Automation</div>
+          <div class="tag">Digital strategy</div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">
+            🚀 Обсудить проект
+          </a>
+
+          <a class="btn btn-secondary" href="mailto:vsarypova071@gmail.com">
+            ✉ Написать на почту
+          </a>
+        </div>
+
+        <div class="socials">
+          <a class="social-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer" title="Telegram">✈</a>
+          <a class="social-link" href="mailto:vsarypova071@gmail.com" title="Email">✉</a>
+        </div>
+
+        <div class="trust">
+          Быстро отвечаю в личных сообщениях Telegram
+        </div>
+
+        <div class="note">
+          Premium personal landing • desktop + mobile
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="portfolio-head">
+        <h2>Портфолио</h2>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <h3>AI-фотосессия</h3>
+          <p>Сервис генерации премиальных портретов с сильной визуальной подачей и акцентом на продажу подписки.</p>
+          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Запросить кейс →</a>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Telegram Mini App</h3>
+          <p>Интерфейс и логика для мини-приложений в Telegram: каталог, заявки, навигация, премиум UI.</p>
+          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Посмотреть детали →</a>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Luxury landing page</h3>
+          <p>Статусные продающие страницы для экспертов и бизнесов, где визуал усиливает доверие и конверсию.</p>
+          <a class="portfolio-link" href="mailto:vsarypova071@gmail.com">Запросить презентацию →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta">
+    <a href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Написать в личку</a>
+  </div>
+</body>
+</html>
