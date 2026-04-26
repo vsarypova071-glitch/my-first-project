@@ -346,6 +346,27 @@
       box-shadow:0 14px 30px rgba(0,0,0,.22);
     }
 
+    .btn-ghost{
+      color:rgba(248,243,234,.50);
+      border:1px solid rgba(255,255,255,.06);
+      background:transparent;
+      font-size:16px;
+      min-height:58px;
+      min-width:unset;
+      padding:0 28px;
+    }
+
+    .btn-ghost:hover{
+      color:rgba(248,243,234,.78);
+      border-color:rgba(255,255,255,.12);
+      box-shadow:none;
+    }
+
+    .btn:active{
+      transform:scale(0.97);
+      transition:transform .1s ease;
+    }
+
     @keyframes shine{
       0%{transform:translateX(-120%)}
       100%{transform:translateX(140%)}
@@ -435,6 +456,11 @@
       box-shadow:0 20px 42px rgba(0,0,0,.22);
     }
 
+    .portfolio-card:active{
+      transform:scale(0.98);
+      transition:transform .1s ease;
+    }
+
     .portfolio-card h3{
       font-size:22px;
       color:#fff4dc;
@@ -493,6 +519,7 @@
     @media (max-width: 768px){
       body{
         padding:10px;
+        padding-bottom:100px;
       }
 
       .shell{
@@ -755,7 +782,7 @@
         <h1>Виктория</h1>
 
         <div class="lead">
-          Создаю AI-продукты, которые усиливают бренд и приводят клиентов
+          Запускаю AI-продукты, которые привлекают клиентов и продают за вас 24/7
         </div>
 
         <div class="desc">
@@ -778,10 +805,10 @@
           </a>
 
           <a class="btn btn-secondary" href="https://max.ru/u/f9LHodD0cOJDl1bV0Zg7BpZGv0DsXo-RJWPWI8YXQOTfdHkPuBwypqkb3Cc" target="_blank" rel="noopener noreferrer">
-            💬 Написать в MAX
+            💬 MAX — отвечаю быстрее
           </a>
 
-          <a class="btn btn-secondary" href="mailto:vsarypova071@gmail.com">
+          <a class="btn btn-ghost" href="mailto:vsarypova071@gmail.com">
             ✉ Написать на почту
           </a>
         </div>
@@ -793,7 +820,7 @@
         </div>
 
         <div class="trust">
-          Быстро отвечаю в личных сообщениях Telegram
+          Быстро отвечаю в Telegram и MAX
         </div>
 
         <div class="note">
