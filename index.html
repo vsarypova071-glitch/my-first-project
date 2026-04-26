@@ -181,6 +181,7 @@
       border-radius:24px;
       background:rgba(13,16,28,.44);
       border:1px solid rgba(240,202,120,.22);
+      -webkit-backdrop-filter:blur(10px);
       backdrop-filter:blur(10px);
       box-shadow:0 12px 40px rgba(0,0,0,.24);
     }
@@ -397,6 +398,11 @@
       transform:translateY(-2px);
       border-color:rgba(240,202,120,.30);
       box-shadow:0 12px 28px rgba(0,0,0,.22);
+    }
+
+    .social-link:active{
+      transform:scale(0.93);
+      transition:transform .1s ease;
     }
 
     .trust{
@@ -672,7 +678,7 @@
       }
 
       .portfolio{
-        padding:0 14px 96px;
+        padding:0 14px 24px;
       }
 
       .portfolio-head{
