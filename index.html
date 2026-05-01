@@ -15,6 +15,8 @@
   <meta name="twitter:title" content="Виктория — AI эксперт" />
   <meta name="twitter:description" content="Запускаю AI-продукты под ключ — от идеи до первых клиентов" />
   <meta name="twitter:image" content="https://my-first-project-bfzd.vercel.app/photo.jpg.png" />
+
+  <link rel="stylesheet" href="./styles.css" />
   <style>
     :root{
       --bg:#05070c;
@@ -908,7 +910,7 @@
         </div>
 
         <div class="actions">
-          <a class="btn btn-primary" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-primary" href="https://t.me/aiVika06" data-popup-open="contact" target="_blank" rel="noopener noreferrer">
             🚀 Обсудить AI-продукт
           </a>
         </div>
@@ -969,7 +971,33 @@
   </main>
 
   <div class="sticky-cta">
-    <a href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Написать в личку</a>
+    <a href="https://t.me/aiVika06" data-popup-open="contact" target="_blank" rel="noopener noreferrer">Написать в личку</a>
   </div>
+
+  <div class="popup-overlay" id="popup-contact" aria-hidden="true">
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-contact-title">
+      <button class="popup-close" type="button" data-popup-close aria-label="Закрыть">×</button>
+      <h3 class="popup-title" id="popup-contact-title">Давай разберём твою задачу 👇</h3>
+      <p class="popup-subtitle">Выбери, как тебе удобнее</p>
+      <div class="popup-buttons">
+        <a class="popup-btn popup-btn-secondary" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        <a class="popup-btn popup-btn-secondary" href="https://vk.ru/id549195357" target="_blank" rel="noopener noreferrer">Написать в VK</a>
+        <a class="popup-btn popup-btn-secondary" href="https://max.ru/u/f9LHodD0cOJDl1bV0Zg7BpZGv0DsXo-RJWPWI8YXQOTfdHkPuBwypqkb3Cc" target="_blank" rel="noopener noreferrer">Написать в MAX</a>
+        <button class="popup-btn popup-btn-primary" type="button" data-popup-open="solution">Получить решение под себя</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popup-solution" aria-hidden="true">
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-solution-title">
+      <button class="popup-close" type="button" data-popup-close aria-label="Закрыть">×</button>
+      <p class="popup-text" id="popup-solution-title">Сейчас быстрее всего — через Telegram 👇<br />там я уже могу сразу разобрать твою задачу</p>
+      <div class="popup-buttons">
+        <a class="popup-btn popup-btn-primary" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Перейти в Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>
