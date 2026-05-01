@@ -150,16 +150,20 @@
     .photo-top{
       position:absolute;
       top:22px;
-      right:22px;
+      left:22px;
       z-index:4;
       display:flex;
       flex-direction:column;
-      align-items:flex-end;
       gap:10px;
     }
 
+    @media (min-width: 769px){
+      .photo-top{
+        display:none;
+      }
+    }
+
     .mini-name{
-      display:none;
       color:#fff3da;
       font-size:18px;
       font-weight:700;
