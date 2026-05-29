@@ -1,0 +1,13 @@
+{
+  "name": "v-sharypova-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Form-to-Telegram backend for v-sharypova.ru",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
