@@ -772,7 +772,7 @@
       }
 
       .portfolio{
-        padding:0 14px 140px;
+        padding:0 14px 24px;
       }
 
       .portfolio-head{
@@ -877,6 +877,198 @@
         min-height:52px;
       }
     }
+
+    .section-title{
+      font-size:32px;
+      font-weight:800;
+      color:#fff4dc;
+      margin-bottom:20px;
+    }
+
+    .process{
+      position:relative;
+      z-index:2;
+      padding:0 36px 36px;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .process-step{
+      padding:22px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+    .process-num{
+      font-size:12px;
+      font-weight:700;
+      color:#f0ca78;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .process-step-title{
+      font-size:17px;
+      font-weight:700;
+      color:#fff4dc;
+      margin-bottom:8px;
+    }
+
+    .process-step p{
+      font-size:15px;
+      line-height:1.65;
+      color:rgba(248,243,234,.72);
+    }
+
+    .tasks{
+      position:relative;
+      z-index:2;
+      padding:0 36px 36px;
+    }
+
+    .tasks-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .task-card{
+      padding:22px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+      transition:.25s ease;
+    }
+
+    .task-card:hover{
+      border-color:rgba(240,202,120,.22);
+      box-shadow:0 14px 32px rgba(0,0,0,.18);
+    }
+
+    .task-card-title{
+      font-size:17px;
+      font-weight:700;
+      color:#f0ca78;
+      margin-bottom:8px;
+      line-height:1.35;
+    }
+
+    .task-card p{
+      font-size:15px;
+      line-height:1.65;
+      color:rgba(248,243,234,.72);
+    }
+
+    .deliverables{
+      position:relative;
+      z-index:2;
+      padding:0 36px 36px;
+    }
+
+    .deliverables-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .deliverable-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:22px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+    .deliverable-title{
+      font-size:17px;
+      font-weight:700;
+      color:#fff4dc;
+      margin-bottom:6px;
+    }
+
+    .deliverable-item p{
+      font-size:15px;
+      line-height:1.65;
+      color:rgba(248,243,234,.72);
+    }
+
+    .cta-section{
+      position:relative;
+      z-index:2;
+      padding:0 36px 36px;
+    }
+
+    .cta-inner{
+      padding:48px 36px;
+      border-radius:28px;
+      border:1px solid rgba(240,202,120,.18);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(240,202,120,.07), transparent 60%),
+        rgba(255,255,255,.02);
+      text-align:center;
+    }
+
+    .cta-title{
+      font-size:36px;
+      font-weight:800;
+      color:#fff4dc;
+      margin-bottom:12px;
+      line-height:1.15;
+    }
+
+    .cta-sub{
+      font-size:18px;
+      color:rgba(248,243,234,.72);
+      margin-bottom:28px;
+      line-height:1.5;
+    }
+
+    @media (max-width: 1220px){
+      .process-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 768px){
+      .process,
+      .tasks,
+      .deliverables{
+        padding:0 14px 24px;
+      }
+
+      .process-grid,
+      .tasks-grid,
+      .deliverables-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .cta-section{
+        padding:0 14px 140px;
+      }
+
+      .cta-inner{
+        padding:28px 18px;
+        border-radius:20px;
+      }
+
+      .cta-title{
+        font-size:24px;
+      }
+
+      .cta-sub{
+        font-size:15px;
+        margin-bottom:18px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -929,6 +1121,132 @@
       </div>
     </section>
 
+    <section class="process">
+      <h2 class="section-title">Как проходит работа</h2>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3 class="process-step-title">Разбор задачи</h3>
+          <p>Пишешь мне, описываешь, что нужно. Я задаю уточняющие вопросы.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3 class="process-step-title">Стратегия</h3>
+          <p>Готовлю план: структура, логика, стек. Согласуем вместе до старта.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3 class="process-step-title">Разработка</h3>
+          <p>Делаю продукт — дизайн, автоматизация, интеграции. Ты видишь прогресс.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h3 class="process-step-title">Запуск</h3>
+          <p>Сдаю готовый продукт. Показываю, как им пользоваться.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tasks">
+      <h2 class="section-title">С какими задачами я помогаю</h2>
+      <div class="tasks-grid">
+        <div class="task-card">
+          <h3 class="task-card-title">Клиенты есть, но они не понимают, чем ты занимаешься</h3>
+          <p>Сделаю страницу, которая объясняет ценность с первого экрана и сразу вызывает желание написать.</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-card-title">Теряешь заявки — люди приходят, но не оставляют контакт</h3>
+          <p>Выстрою путь от «увидел» до «написал»: форма, кнопка, автоматическое уведомление тебе в Telegram.</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-card-title">Хочешь зарабатывать, пока не работаешь</h3>
+          <p>Запущу AI-сервис или продукт, который принимает заказы и отвечает клиентам без твоего участия.</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-card-title">Выглядишь не так статусно, как стоишь на самом деле</h3>
+          <p>Сделаю дизайн уровня premium — чтобы цена не вызывала вопросов, а вызывала доверие.</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-card-title">Есть идея, но не знаешь, с чего начать и реально ли это</h3>
+          <p>Разберём вместе: что можно автоматизировать, сколько это займёт и что ты получишь в итоге.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <h2 class="section-title">Что входит в работу</h2>
+      <div class="deliverables-grid">
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Готовый продукт под ключ</h4>
+            <p>Не заготовка, а рабочий инструмент с первого дня.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Дизайн уровня premium</h4>
+            <p>Выглядит дорого, загружается быстро.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Автоматизация внутри</h4>
+            <p>Заявки, уведомления, интеграции — сразу в деле.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Работает на тебя 24/7</h4>
+            <p>Продаёт и собирает лиды даже когда ты не в сети.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Адаптация под мобильные</h4>
+            <p>Отлично выглядит на любом устройстве.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="trust-dot"></div>
+          <div>
+            <h4 class="deliverable-title">Поддержка после запуска</h4>
+            <p>Отвечаю на вопросы по готовому продукту.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="portfolio-head">
+        <h2>Кейсы, которые приносят результат</h2>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <h3>AI-фотосессия</h3>
+          <p>Сервис генерации премиальных портретов с сильной визуальной подачей и акцентом на продажу подписки.</p>
+          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Запросить кейс →</a>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Telegram Mini App</h3>
+          <p>Интерфейс и логика для мини-приложений в Telegram: каталог, заявки, навигация, премиум UI.</p>
+          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Посмотреть детали →</a>
+        </article>
+
+        <article class="portfolio-card">
+          <h3>Luxury landing page</h3>
+          <p>Статусные продающие страницы для экспертов и бизнесов, где визуал усиливает доверие и конверсию.</p>
+          <a class="portfolio-link" href="mailto:vsarypova071@gmail.com">Запросить презентацию →</a>
+        </article>
+      </div>
+    </section>
+
     <section class="trust-block">
       <h2 class="trust-block-title">Почему мне доверяют</h2>
       <div class="trust-list">
@@ -963,29 +1281,15 @@
       </div>
     </section>
 
-    <section class="portfolio" id="portfolio">
-      <div class="portfolio-head">
-        <h2>Кейсы, которые приносят результат</h2>
-      </div>
-
-      <div class="portfolio-grid">
-        <article class="portfolio-card">
-          <h3>AI-фотосессия</h3>
-          <p>Сервис генерации премиальных портретов с сильной визуальной подачей и акцентом на продажу подписки.</p>
-          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Запросить кейс →</a>
-        </article>
-
-        <article class="portfolio-card">
-          <h3>Telegram Mini App</h3>
-          <p>Интерфейс и логика для мини-приложений в Telegram: каталог, заявки, навигация, премиум UI.</p>
-          <a class="portfolio-link" href="https://t.me/aiVika06" target="_blank" rel="noopener noreferrer">Посмотреть детали →</a>
-        </article>
-
-        <article class="portfolio-card">
-          <h3>Luxury landing page</h3>
-          <p>Статусные продающие страницы для экспертов и бизнесов, где визуал усиливает доверие и конверсию.</p>
-          <a class="portfolio-link" href="mailto:vsarypova071@gmail.com">Запросить презентацию →</a>
-        </article>
+    <section class="cta-section">
+      <div class="cta-inner">
+        <h2 class="cta-title">Готовы обсудить вашу задачу?</h2>
+        <p class="cta-sub">Напишите — разберём, что подойдёт именно вам.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://t.me/aiVika06" data-popup-open="contact" target="_blank" rel="noopener noreferrer">
+            🚀 Обсудить проект
+          </a>
+        </div>
       </div>
     </section>
   </main>
